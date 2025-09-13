@@ -9,10 +9,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 // middleware
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://your-frontend.vercel.app'],
+  origin: 'http://localhost:5173', // frontend origin
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
+
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); // Handle preflight requests
 
