@@ -43,7 +43,6 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// Error handling middleware
 
 // DB connection
 dbConnection();
@@ -51,6 +50,3 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-// export default app;
-
-// For Vercel deployment
