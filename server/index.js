@@ -42,6 +42,10 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use("/api/v1/notes", noteRoutes);
 
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
 // Error handling middleware
 
 // DB connection
