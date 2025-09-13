@@ -42,9 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use("/api/v1/notes", noteRoutes);
 
-app.get('/', (req, res) => {
-  res.send('Hello from Express server!');
-});
+// Error handling middleware
 
 // DB connection
 dbConnection();
