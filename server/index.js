@@ -1,18 +1,16 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import { dbConnection } from './config/db.js';
-import noteRoutes from './routes/note.route.js';
-import cors from 'cors';
+import express from "express";
+import dotenv from "dotenv";
+import { dbConnection } from "./config/db.js";
+import noteRoutes from "./routes/note.route.js";
+import cors from "cors";
 
 dotenv.config();
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ CORS setup
 const allowedOrigins = [
-  "http://localhost:5173",  // local dev
-  "https://note-taking-xzse.vercel.app"  // deployed frontend
+  "http://localhost:5173",
+  "https://note-taking-xzse.vercel.app"
 ];
 
 const corsOptions = {
@@ -28,9 +26,10 @@ const corsOptions = {
   methods: ["GET","POST","PUT","DELETE","OPTIONS"],
   allowedHeaders: ["Content-Type","Authorization"]
 };
-app.use(cors(corsOptions));
-// app.options('.*', cors(corsOptions));
 
+// ✅ Apply CORS for all requests including preflight
+app.use(cors(corsOptions));
+app.options(".*", cors(corsOptions));
 
 // Middleware
 app.use(express.json());
@@ -39,14 +38,9 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use("/api/v1/notes", noteRoutes);
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
+app.get("/", (req,res) => res.send("API is running..."));
 
 // DB connection
 dbConnection();
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
 
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
