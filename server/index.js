@@ -2,11 +2,13 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { dbConnection } from './config/db.js';
 import noteRoutes from './routes/note.route.js';
+import cors from 'cors';
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 // middleware
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // routes
