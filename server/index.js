@@ -8,11 +8,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 // middleware
-app.use(cors({
-   origin: 'http://localhost:5173', // ya production domain
+const corsOptions = {
+  origin: ['http://localhost:5173', 'https://your-frontend.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
 
-}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // routes

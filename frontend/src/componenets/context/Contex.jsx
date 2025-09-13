@@ -11,6 +11,7 @@ export const NoteProvider = ({ children }) => {
     // get all notes
     const getNotes = async () => {
         setLoading(true);
+
         try {
             const res = await baseURL.get("get-notes");
             setNotes(res.data.notes);
