@@ -24,6 +24,7 @@ function Footer() {
           </a>
         </div>
 
+        
         {/* Right Side - Social Icons */}
         <div className="flex space-x-4">
           <a href="https://github.com/satyendrachaudhary143" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
