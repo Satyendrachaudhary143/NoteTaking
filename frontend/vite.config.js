@@ -6,7 +6,11 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   server: {
     proxy: {
-      '/api': ' https://note-taking-orpin.vercel.app', // https://note-taking-orpin.vercel.app , http://localhost:4001
+      '/api': {
+        target: 'https://note-taking-orpin.vercel.app', // https://note-taking-orpin.vercel.app , http://localhost:4001
+        changeOrigin: true,
+        secure:true
+      } 
     },
   },
   plugins: [react(),tailwindcss(),],
