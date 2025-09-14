@@ -8,39 +8,12 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ Define allowed origins
-const allowedOrigins = [
-  'https://note-taking-xzse.vercel.app',
-  'http://localhost:5173'
-];
-
-// ✅ CORS middleware with dynamic origin check
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
-
-app.use(cors(corsOptions));
-
-// ✅ Handle preflight OPTIONS requests globally
-app.use((req, res, next) => {
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.sendStatus(200);
-  } else {
-    next();
-  }
-});
+// ✅ CORS
+app.use(cors({
+    origin: ["http://localhost:5173","https://note-taking-orpin.vercel.app"], // frontend url
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+}));
 
 // ✅ Middleware
 app.use(express.json());
