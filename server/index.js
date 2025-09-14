@@ -24,7 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-const cors = require('cors');
 
 const corsOptions = {
   origin: function (origin, callback) {
