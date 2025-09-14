@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://note-taking-orpin.vercel.app', // https://note-taking-orpin.vercel.app , http://localhost:4001
+        target: 'https://notetaking-xggl.onrender.com', // https://note-taking-orpin.vercel.app , http://localhost:4001
         changeOrigin: true,
         secure:true
       } 
