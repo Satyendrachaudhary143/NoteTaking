@@ -1,6 +1,6 @@
 import axios from "axios";
 const baseURL = axios.create({
-    baseURL: "/api/v1/notes/",
+    baseURL: "https://notetaking-xggl.onrender.com/api/v1/notes/",
     withCredentials: true
 
 })
