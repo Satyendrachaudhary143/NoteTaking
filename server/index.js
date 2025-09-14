@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ CORS
 app.use(cors({
-    origin: ["http://localhost:5173","https://note-taking-orpin.vercel.app"], // frontend url
+    origin: ["http://localhost:5173","https://note-taking-orpin.vercel.app","https://notetaking-1-w0mg.onrender.com/"], // frontend url
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
